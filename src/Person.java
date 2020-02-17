@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Person {
     private String name;
     private int age;
@@ -25,6 +27,29 @@ public class Person {
 
     @Override
     public String toString() {
-        return "[Name:] " + this.name + " " + "[Age:] " + this.age;
+        return "[Name: " + this.name + "] " + "[Age: " + this.age + "]";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        // self check
+        if (this == o) {
+            return true;
+    }
+
+        // null check
+        if (o == null) {
+            return false;
+        }
+
+        // type check and cast
+        if (getClass() != o.getClass()) {
+            return false;
+        }
+
+        Person person = (Person) o;
+
+        return Objects.equals(name, person.name) &&
+                Objects.equals(age, person.age);
     }
 }
